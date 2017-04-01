@@ -1,0 +1,23 @@
+{
+  "name": "sprite-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "sprite-cli": "./main.js"
+  },
+  "author": "Justin Foss",
+  "license": "ISC",
+  "dependencies": {
+    "cli-color": "^1.2.0",
+    "commander": "^2.9.0",
+    "gm": "^1.23.0",
+    "image-to-ascii": "^3.0.5",
+    "lodash": "^4.17.4",
+    "log-update": "^1.0.2",
+    "shelljs": "^0.7.7"
+  }
+}

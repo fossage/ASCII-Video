@@ -1,0 +1,30 @@
+{   
+  "extends": "eslint:recommended",
+  "env": {
+    "node": true
+  },
+   
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module"
+  },
+  
+  "globals": {
+    "Promise": true
+  },
+
+  "rules": {
+    "no-console"          : 0,
+    "eqeqeq"              : ["error", "always"],
+    "curly"               : ["error", "multi-line"],
+    "indent"              : ["error", 2],
+    "no-undef"            : "warn",
+    "id-length"           : ["error", {"min": 1, "max": 40 }],
+    "valid-typeof"        : "warn",
+    "no-unreachable"      : "warn",
+    "no-unused-vars"      : "warn",
+    "no-const-assign"     : "warn",
+    "constructor-super"   : "warn",
+    "no-this-before-super": "warn"
+  }
+}

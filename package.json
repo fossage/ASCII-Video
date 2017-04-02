@@ -1,5 +1,5 @@
 {
-  "name": "sprite-cli",
+  "name": "ascii-video",
   "version": "0.0.1",
   "description": "",
   "main": "./main.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "sprite-cli": "./main.js"
+    "ascii-video": "./main.js"
   },
   "author": "Justin Foss",
   "license": "ISC",

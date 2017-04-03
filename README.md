@@ -5,7 +5,7 @@
 
 ASCII Video is a command line tool which allows you to convert movies into ASCII sprite sheets and then play them back in the terminal. It uses [ffmpeg](https://ffmpeg.org/) to break up the video into a series of images, which then are converted to individual ASCII art frames using [image-to-ascii](https://github.com/IonicaBizau/image-to-ascii).  It then builds those frames up into a Javascript array as text, and writes the resulting array to an output file that can then be read in by the program and played back in the terminal with the help of [log-update](https://github.com/sindresorhus/log-update).
 
-![ASCII Video is Magic](./out.gif?raw=true "Demo Video")
+![ASCII Video is Magic](https://www.dropbox.com/s/f92h230quy9xeac/out.gif?dl=0&raw=true "Demo Video")
 
 ## Why would you make this
 

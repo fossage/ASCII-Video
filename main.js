@@ -19,7 +19,7 @@ const tmpDirPath = '/tmp/__sprite_cli_output/';
 ======================================================*/
 program
   .version('0.0.1')
-  .command('create <[path/to/]input-video> <[path/to/]output-file-name.js>')
+  .command('create <input-video> <output-filename>')
   .description('Takes an input video, converts it into ASCII frames, and writes it to an output file.')
   .action((video, outputTo) => {
     if(!_.endsWith(outputTo, '.js')) {

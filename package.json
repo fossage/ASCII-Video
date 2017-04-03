@@ -1,8 +1,18 @@
 {
   "name": "ascii-video",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.4",
+  "description": "A tool to create and play sprite animation in the terminal",
   "main": "./main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fossage/ASCII-Video"
+  },
+  "maintainers": [
+    {
+      "name": "fossage",
+      "email": "jfoss124@gmail.com"
+    }
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

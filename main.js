@@ -66,20 +66,17 @@ program
     .description('Plays back a generated sprite file')
     .option('-f, --frame_rate <rate>', 'A number which specifies the rate at which to iterate through the sprites')
     .action((pathToFile, opts) => {
-        console.log(pathToFile)
-        readFile(pathToFile)
-            .then((data) => {
-                let i = 0;
-                const frames = JSON.parse(data);
-                const frameRate = (opts && opts.frame_rate) ? opts.frame_rate : 155;
+        console.log(pathToFile);
+        const lineReader = require('readline').createInterface({
+            input: require('fs').createReadStream(pathToFile)
+        });
 
-                setInterval(() => {
-                    logUpdate(frames[i]);
-                    (i < frames.length - 1)
-                        ? i++
-                        : i = 0
-                }, frameRate);
-            });
+        lineReader.on('line', line => {
+            const frame = yaml.safeLoad(line);
+            const frameRate = (opts && opts.frame_rate) ? opts.frame_rate : 155;
+
+            setTimeout(() => logUpdate(frame), frameRate);
+        });
     });
 
 program.parse(process.argv);
@@ -118,7 +115,7 @@ function createSprites(files, outputTo, idx, sprites) {
 }
 
 function appendToFile(outputTo, sprites) {
-    const outFile = yaml.dump(sprites);
+    const outFile = yaml.safeDump(sprites);
 
     fs.appendFile(outputTo, outFile, (err) => {
         if (err) return console.log(warningMsg(err));

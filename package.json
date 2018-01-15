@@ -1,6 +1,6 @@
 {
   "name": "ascii-video",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A tool to create and play sprite animation in the terminal",
   "main": "./main.js",
   "repository": {
@@ -26,6 +26,7 @@
     "commander": "^2.9.0",
     "gm": "^1.23.0",
     "image-to-ascii": "^3.0.5",
+    "js-yaml": "^3.10.0",
     "lodash": "^4.17.4",
     "log-update": "^1.0.2",
     "paralleljs": "^0.2.1",

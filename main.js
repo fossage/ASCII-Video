@@ -6,6 +6,7 @@
 ======================================================*/
 const _ = require('lodash');
 const fs = require('fs');
+const yaml = require('js-yaml');
 const clc = require('cli-color');
 const shell = require('shelljs');
 const program = require('commander');
@@ -18,12 +19,17 @@ const tmpDirPath = '/tmp/__sprite_cli_output/';
                           MAIN
 ======================================================*/
 program
-    .version('0.0.4')
+    .version('0.0.5')
     .command('create <input-video> <output-filename>')
     .description('Takes an input video, converts it into ASCII frames, and writes it to an output file.')
     .action((video, outputTo) => {
-        if (!_.endsWith(outputTo, '.js')) {
-            return console.log(errMsg('The outputfile must be a Javascript file.'));
+        if (!_.endsWith(outputTo, '.yaml')) {
+            return console.log(errMsg('The outputfile must be a yaml file.'));
+        }
+
+        // remove the output file if it exists already
+        if (fs.existsSync(outputTo)) {
+            fs.unlinkSync(outputTo);
         }
 
         const dir = process.cwd();
@@ -85,6 +91,9 @@ if (!program.args.length) program.help();
 function createSprites(files, outputTo, idx, sprites) {
     if (idx === files.length) {
         appendToFile(outputTo, sprites, true);
+        // clean up temp directory after the last chunk of sprites is written
+        shell.exec(`rm -rf ${tmpDirPath}`);
+        console.log(infoMsg(`File written to ${outputTo}`));
     } else {
         imageToAscii(tmpDirPath + files[idx], {
             image_type: 'jpg'
@@ -108,17 +117,11 @@ function createSprites(files, outputTo, idx, sprites) {
     }
 }
 
-function appendToFile(outputTo, sprites, isLastWrite = false) {
-    const outFile = JSON.stringify(sprites);
+function appendToFile(outputTo, sprites) {
+    const outFile = yaml.dump(sprites);
 
     fs.appendFile(outputTo, outFile, (err) => {
         if (err) return console.log(warningMsg(err));
-
-        // clean up temp directory if this is the last chunk of sprites to append
-        if (isLastWrite) {
-            shell.exec(`rm -rf ${tmpDirPath}`);
-            console.log(infoMsg(`File written to ${outputTo}`));
-        }
     });
 }
 

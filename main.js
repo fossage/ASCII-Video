@@ -72,7 +72,7 @@ program
         });
 
         lineReader.on('line', line => {
-            const frame = yaml.safeLoad(line);
+            const frame = yaml.safeLoad(line)[0];
             const frameRate = (opts && opts.frame_rate) ? opts.frame_rate : 155;
 
             setTimeout(() => logUpdate(frame), frameRate);

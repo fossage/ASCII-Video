@@ -18,7 +18,7 @@ const END_OF_FRAME_ID = '\nzzzzzzzzzzzzzzzzzzzzzzz'
                           MAIN
 ======================================================*/
 program
-  .version('0.1.1')
+  .version('0.1.2')
   .command('create <input-video> <output-filename>')
   .description(
     'Takes an input video, converts it into ASCII frames, and writes it to an output file.'

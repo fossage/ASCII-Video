@@ -1,6 +1,6 @@
 {
   "name": "ascii-video",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A tool to create and play sprite animation in the terminal",
   "main": "./main.js",
   "repository": {
@@ -20,6 +20,7 @@
     "ascii-video": "./main.js"
   },
   "author": "Justin Foss",
+  "contributors": [{ "name": "Xinyi Chen" }],
   "license": "ISC",
   "dependencies": {
     "cli-color": "^1.2.0",

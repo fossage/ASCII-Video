@@ -52,18 +52,16 @@ program
     clearInterval(finishLoadingId)
 
     // ensure frames are in correct order
-    const files = fs
-      .readdirSync(TMP_DIR_PATH)
-      .sort((f1, f2) => {
+    const files = []
+    fs.readdirSync(TMP_DIR_PATH)
+      .forEach(f => {
         try {
-          const fileOne = parseInt(f1.match(/\d/g).join(''))
-          const fileTwo = parseInt(f2.match(/\d/g).join(''))
-          return fileTwo - (fileOne + 1)
+          const fId = parseInt(f.match(/\d/g).join(''))
+          files[fId - 1] = f  // convert 1-indexed id to 0-indexed
         } catch (e) {
           return 0
         }
       })
-      .reverse()
 
     createSprites(files, outputTo, 0, [])
   })
